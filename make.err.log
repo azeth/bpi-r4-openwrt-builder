@@ -1,0 +1,2 @@
+ERROR: /home/azeth/bpi-r4/bpi-r4-openwrt-builder is not a OpenWrt root directory.
+ERROR: The autobuild script must be called from within the OpenWrt root directory.
