@@ -1,0 +1,29 @@
+--- a/drivers/net/phy/sfp.c
++++ b/drivers/net/phy/sfp.c
+@@ -351,6 +351,11 @@ static void sfp_fixup_ignore_tx_fault(st
+	sfp->tx_fault_ignore = true;
+ }
+
++static void sfp_fixup_ignore_rx_los(struct sfp *sfp)
++{
++	sfp->state_hw_mask &= ~(SFP_F_LOS);
++}
++
+ // For 10GBASE-T short-reach modules
+ static void sfp_fixup_10gbaset_30m(struct sfp *sfp)
+ {
+@@ -499,6 +504,14 @@ static const struct sfp_quirk sfp_quirks
+	SFP_QUIRK_F("Walsun", "HXSX-ATRC-1", sfp_fixup_fs_10gt),
+	SFP_QUIRK_F("Walsun", "HXSX-ATRI-1", sfp_fixup_fs_10gt),
+
++	// DFP-34X-2C2 GPON ONU supports 2500base-X
++	SFP_QUIRK("OEM", "DFP-34X-2C2", sfp_quirk_2500basex,
++		  sfp_fixup_ignore_rx_los),
++	SFP_QUIRK("OEM", "XPON-Stick", sfp_quirk_2500basex,
++		  sfp_fixup_ignore_rx_los),
++	SFP_QUIRK("OEM", "GPONOLTC+++", sfp_quirk_2500basex,
++		  sfp_fixup_ignore_rx_los),
++
+	// OEM SFP-GE-T is a 1000Base-T module with broken TX_FAULT indicator
+	SFP_QUIRK_F("OEM", "SFP-GE-T", sfp_fixup_ignore_tx_fault),
+
