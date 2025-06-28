@@ -23,7 +23,7 @@ cd openwrt; git checkout 989b12999c5b7c35ec310d26ac6f01eb9567be6e; cd -;        
 \cp -r ../mtk-openwrt-feeds mtk-openwrt-feeds
 cd mtk-openwrt-feeds; git checkout cc0de566eb90309e997d66ed1095579eb3b30751; cd -;      #Add mtkhnat macvlan support
 
-echo cc0de56"" > mtk-openwrt-feeds/autobuild/unified/feed_revision
+echo "cc0de56" > mtk-openwrt-feeds/autobuild/unified/feed_revision
 
 \cp -r configs/defconfig mtk-openwrt-feeds/autobuild/unified/filogic/24.10/defconfig
 #\cp -r configs/dbg_defconfig mtk-openwrt-feeds/autobuild/unified/filogic/24.10/defconfig	#dbg+strongswan
